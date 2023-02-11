@@ -1,6 +1,8 @@
 PRAGMA foreign_keys=ON;
 PRAGMA foreign_keys;
 
+-- .schema
+
 -----------1. User Table ----------------------------------------------
 
 -- CREATE TABLE user(
@@ -10,8 +12,13 @@ PRAGMA foreign_keys;
 --   email VARCHAR(200)
 -- );
 
--- INSERT INTO user(full_name,mobile_number,email)
--- VALUES ("Balu Tarock", 9398453013,"balutarock71117@gmail.com");
+-- ALTER TABLE
+--   user
+-- ADD
+--   created_date TEXT;
+
+-- INSERT INTO user(full_name,mobile_number,email,created_date,updated_date,password)
+-- VALUES ("Balu Tarock", 9398453013,"balutarock71117@gmail.com","22-12-2022","22-12-2022","password");
 
 -- SELECT * FROM user;
 
@@ -27,6 +34,12 @@ PRAGMA foreign_keys;
 --   user_id INTEGER,
 --   FOREIGN KEY(user_id) REFERENCES user(user_id) ON DELETE CASCADE
 -- );
+
+
+-- ALTER TABLE
+--   address
+-- ADD
+--   updated_date TEXT;
 
 
 -- INSERT INTO address(pin_code,city,country,state,door_no,user_id)
@@ -46,10 +59,30 @@ PRAGMA foreign_keys;
 -- );
 
 
--- INSERT INTO products(product_name,brand,category,price)
--- VALUES ("Fogg","fogg","perfume",190);
 
--- SELECT * FROM products;
+-- ALTER TABLE
+--   products
+-- ADD
+--   image_url TEXT;
+
+
+-- ALTER TABLE
+--   table_name RENAME COLUMN c1 TO c2;
+
+-- ALTER TABLE
+--   table_name DROP COLUMN column_name;
+
+
+-- INSERT INTO products(product_name,brand,category,price,image_url,created_date,updated_date)
+-- VALUES ("Fogg 7","fogg","perfume",190,"https://res.cloudinary.com/dxnhvq8pl/image/upload/v1671056496/movie%20app%20mini%20project/image_vrkfsi.png","22-12-2022","22-12-2022");
+
+
+-- UPDATE products
+-- SET image_url = "https://res.cloudinary.com/dxnhvq8pl/image/upload/v1671056496/movie%20app%20mini%20project/image_vrkfsi.png"
+-- WHERE condition;
+
+
+SELECT * FROM products;
 
 
 -------------------4. Cart Table -------------------------------------------------------------
@@ -61,6 +94,11 @@ PRAGMA foreign_keys;
 --   FOREIGN KEY(user_id) REFERENCES user(user_id) ON DELETE CASCADE
 -- );
 
+
+-- ALTER TABLE
+--   cart
+-- ADD
+--   updated_date TEXT;
 
 -- INSERT INTO cart(user_id,total_price)
 -- VALUES (1,1234);
@@ -80,10 +118,17 @@ PRAGMA foreign_keys;
 -- );
 
 
+-- ALTER TABLE
+--   cart_product
+-- ADD
+--   updated_date TEXT;
+
+
 -- INSERT INTO cart_product(cart_id,product_id,quantity)
 -- VALUES (1,1,1);
 
 -- SELECT * FROM cart_product;
+
 
 
 
