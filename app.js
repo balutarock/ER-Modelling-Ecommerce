@@ -150,3 +150,16 @@ app.get("/products/:id", authonticateToken, async (request, response) => {
   const productsArray = await db.get(getOneProducts);
   response.send(JSON.stringify({ status: 200, data: productsArray }));
 });
+
+
+app.get("/cart/:id", authonticateToken, async (request, response) => {
+  const { id } = request.params;
+  const getOneProducts = `
+      SELECT
+        *
+      FROM
+      products
+      WHERE id=${id}`;
+  const productsArray = await db.get(getOneProducts);
+  response.send(JSON.stringify({ status: 200, data: productsArray }));
+});

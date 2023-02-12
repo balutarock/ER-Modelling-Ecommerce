@@ -145,14 +145,18 @@ SELECT * FROM cart;
 -- );
 
 
+ALTER TABLE Ecommerce.cart_product RENAME TO cart_productss;
+
+
+
 -- ALTER TABLE
 --   cart_product
 -- ADD
 --   updated_date TEXT;
 
 
--- INSERT INTO cart_product(cart_id,product_id,quantity)
--- VALUES (1,1,1);
+INSERT INTO cart_product(cart_id,product_id,quantity)
+VALUES (1,5,1);
 
 SELECT * FROM cart_product;
 
