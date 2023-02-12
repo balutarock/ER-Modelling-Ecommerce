@@ -4,15 +4,30 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3002/products/1/ HTTP/1.1
+Authorization: Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJhbGFuYWdlbmRyYWt1bWFyIiwiaWF0IjoxNjc2MjA4NDgzfQ.dpyMCWxuPiPKG2tBgac3zTEwRqVKWhakKNE7T50k950
 Content-Type: application/json
 
 
+###
+POST http://localhost:3002/signup/ HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "name" : "balanagendrakumar", 
+    "email": "subbu@gmail.com",
+    "password":"nagendra7@",
+    "mobile":"9398453013"
+}
 
 
+###
+POST http://localhost:3002/login/ HTTP/1.1
+Content-Type: application/json
 
-
-
-
+{ 
+    "email": "subbu@gmail.com",
+    "password":"nagendra7@"
+}
 
 
 
