@@ -43,7 +43,7 @@ PRAGMA foreign_keys;
 
 -- SELECT * FROM user WHERE email='subbu@gmail.com';
 
--- SELECT * FROM user;
+SELECT * FROM user;
 
 --------------2. Address Table -----------------------------------------------------------------
 
@@ -68,7 +68,7 @@ PRAGMA foreign_keys;
 -- INSERT INTO address(pin_code,city,country,state,door_no,user_id)
 -- VALUES (521001,"Machilipatnam","India","Andhra Pradesh","15/434",1);
 
--- SELECT * FROM address;
+SELECT * FROM address;
 
 
 ---------------3. Product Table -----------------------------------------------------------------
@@ -109,7 +109,7 @@ PRAGMA foreign_keys;
 -- WHERE id=1;
 
 
--- SELECT * FROM products;
+SELECT * FROM products;
 
 
 -------------------4. Cart Table -------------------------------------------------------------
@@ -130,7 +130,7 @@ PRAGMA foreign_keys;
 -- INSERT INTO cart(user_id,total_price)
 -- VALUES (3,1234);
 
--- SELECT * FROM cart;
+SELECT * FROM cart;
 
 
 -------------------- 5. cart_product Table ------------------------------
@@ -157,7 +157,16 @@ PRAGMA foreign_keys;
 -- INSERT INTO cart_product(cart_id,product_id,quantity)
 -- VALUES (4,1,1);
 
--- SELECT * FROM cart_product;
+
+-- UPDATE cart_product
+-- SET cart_id = 1, product_id=1,quantity=2
+-- WHERE cart_id=1 AND product_id=1;
+
+
+SELECT * FROM cart_product;
+
+-- SELECT * FROM cart_product WHERE cart_id=3 AND product_id=5;
+
 
 
 -- INSERT INTO cart_product
@@ -165,11 +174,11 @@ PRAGMA foreign_keys;
 -- WHERE cart_id=1;
 
 -------- JOIN three tables --------
-SELECT *
-FROM ((cart_product
-INNER JOIN cart ON cart.id = cart_product.cart_id)
-INNER JOIN products ON products.id = cart_product.product_id)
-WHERE user_id=1;
+-- SELECT *
+-- FROM ((cart_product
+-- INNER JOIN cart ON cart.id = cart_product.cart_id)
+-- INNER JOIN products ON products.id = cart_product.product_id)
+-- WHERE user_id=1;
 
 
 

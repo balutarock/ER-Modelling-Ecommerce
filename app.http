@@ -14,6 +14,17 @@ Authorization: Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJhbG
 Content-Type: application/json
 
 
+###
+POST http://localhost:3002/add-to-cart/ HTTP/1.1
+Authorization: Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJhbGFuYWdlbmRyYWt1bWFyIiwiaWF0IjoxNjc2MjA4NDgzfQ.dpyMCWxuPiPKG2tBgac3zTEwRqVKWhakKNE7T50k950
+Content-Type: application/json
+
+{
+    "cart_id":2,
+    "product_id":2,
+    "quantity":2
+}
+
 
 ###
 POST http://localhost:3002/signup/ HTTP/1.1

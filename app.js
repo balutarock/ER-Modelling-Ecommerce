@@ -162,3 +162,38 @@ app.get("/cart/:id", authonticateToken, async (request, response) => {
   const CartProducts = await db.all(getCartProducts);
   response.send(JSON.stringify({ status: 200, data: CartProducts }));
 });
+
+app.post("/add-to-cart/", authonticateToken, async (request, response) => {
+  const { cart_id, product_id, quantity } = request.body;
+  const getCartProductQuery = `
+  SELECT *
+  FROM cart_product
+  WHERE cart_id=${cart_id}
+  AND product_id=${product_id};`;
+  const getCartProduct = await db.get(getCartProductQuery);
+  // console.log("getCartProduct > ", getCartProduct);
+  if (getCartProduct === undefined) {
+    const addToCartProduct = `
+    INSERT INTO cart_product(cart_id,product_id,quantity)
+    VALUES (${cart_id},${product_id},${quantity});`;
+    await db.run(addToCartProduct);
+    response.send(
+      JSON.stringify({
+        status: 200,
+        msg: "Successfully added product to the cart.",
+      })
+    );
+  } else {
+    const updateCartProductQuery = `
+      UPDATE cart_product
+      SET cart_id = ${cart_id}, product_id=${product_id},quantity=${quantity}
+      WHERE cart_id=${cart_id} AND product_id=${product_id};`;
+    await db.run(updateCartProductQuery);
+    response.send(
+      JSON.stringify({
+        status: 200,
+        msg: "Successfully Updated quantity of the product in cart.",
+      })
+    );
+  }
+});
