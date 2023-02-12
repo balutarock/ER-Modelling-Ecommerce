@@ -5,22 +5,45 @@ PRAGMA foreign_keys;
 
 -----------1. User Table ----------------------------------------------
 
+------ Create Table with colums
+
 -- CREATE TABLE user(
 --   user_id INTEGER NOT NULL PRIMARY KEY, 
 --   full_name VARCHAR(200),
 --   mobile_number INTEGER,
---   email VARCHAR(200)
+--   email VARCHAR(200),
+--   password VARCHAR,
+--   created_at TEXT,
+--   updated_at TEXT,
 -- );
+
+------ Create Columns in Table
 
 -- ALTER TABLE
 --   user
 -- ADD
---   created_date TEXT;
+--   password TEXT;
 
--- INSERT INTO user(full_name,mobile_number,email,created_date,updated_date,password)
+------ Add Rows in the Table
+
+-- INSERT INTO user(full_name,mobile_number,email,created_at,updated_at,password)
 -- VALUES ("Balu Tarock", 9398453013,"balutarock71117@gmail.com","22-12-2022","22-12-2022","password");
 
--- SELECT * FROM user;
+
+-- UPDATE user
+-- SET email = "riyaz@gmail.com"
+-- WHERE user_id=2;
+
+
+-- DELETE FROM user
+-- WHERE user_id = 4;
+
+
+------- View the Rows in the Table
+
+-- SELECT * FROM user WHERE email='subbu@gmail.com';
+
+SELECT * FROM user;
 
 --------------2. Address Table -----------------------------------------------------------------
 
@@ -55,31 +78,35 @@ PRAGMA foreign_keys;
 --   product_name VARCHAR(200),
 --   brand VARCHAR(200),
 --   category VARCHAR(200),
---   price INTEGER
+--   price INTEGER,
+--   image_url TEXT,
+--   created_at TEXT,
+--   updated_at TEXT,
 -- );
-
 
 
 -- ALTER TABLE
 --   products
--- ADD
---   image_url TEXT;
+-- ADD 
+--   updated_at TEXT;
+
 
 
 -- ALTER TABLE
 --   table_name RENAME COLUMN c1 TO c2;
 
+
 -- ALTER TABLE
 --   table_name DROP COLUMN column_name;
 
 
--- INSERT INTO products(product_name,brand,category,price,image_url,created_date,updated_date)
--- VALUES ("Fogg 7","fogg","perfume",190,"https://res.cloudinary.com/dxnhvq8pl/image/upload/v1671056496/movie%20app%20mini%20project/image_vrkfsi.png","22-12-2022","22-12-2022");
+-- INSERT INTO products(product_name,brand,category,price,image_url,created_at,updated_at)
+-- VALUES ("Fogg 5","fogg","perfume",190,"https://res.cloudinary.com/dxnhvq8pl/image/upload/v1671056496/movie%20app%20mini%20project/image_vrkfsi.png","22-12-2022","22-12-2022");
 
 
 -- UPDATE products
--- SET image_url = "https://res.cloudinary.com/dxnhvq8pl/image/upload/v1671056496/movie%20app%20mini%20project/image_vrkfsi.png"
--- WHERE condition;
+-- SET image_url = "https://res.cloudinary.com/dxnhvq8pl/image/upload/v1671056496/movie%20app%20mini%20project/image_vrkfsi.png", created_at="22-12-2022",updated_at="22-12-2022"
+-- WHERE id=1;
 
 
 SELECT * FROM products;
@@ -101,9 +128,9 @@ SELECT * FROM products;
 --   updated_date TEXT;
 
 -- INSERT INTO cart(user_id,total_price)
--- VALUES (1,1234);
+-- VALUES (3,1234);
 
--- SELECT * FROM cart;
+SELECT * FROM cart;
 
 
 -------------------- 5. cart_product Table ------------------------------
@@ -127,15 +154,12 @@ SELECT * FROM products;
 -- INSERT INTO cart_product(cart_id,product_id,quantity)
 -- VALUES (1,1,1);
 
--- SELECT * FROM cart_product;
+SELECT * FROM cart_product;
 
-
-
-
-
-
-
-
+SELECT *
+FROM ((cart_product
+INNER JOIN cart ON cart.id = cart_product.cart_id)
+INNER JOIN products ON products.id = cart_product.product_id);
 
 
 
