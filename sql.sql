@@ -141,12 +141,11 @@ SELECT * FROM cart;
 --   product_id INTEGER,
 --   quantity INTEGER,
 --   FOREIGN KEY(cart_id) REFERENCES cart(id) ON DELETE CASCADE
---   FOREIGN KEY(product_id) REFERENCES cart(id) ON DELETE CASCADE
+--   FOREIGN KEY(product_id) REFERENCES products(id) ON DELETE CASCADE
 -- );
 
 
-ALTER TABLE Ecommerce.cart_product RENAME TO cart_productss;
-
+-- ALTER TABLE Ecommerce.cart_product RENAME TO cart_productss;
 
 
 -- ALTER TABLE
@@ -155,15 +154,22 @@ ALTER TABLE Ecommerce.cart_product RENAME TO cart_productss;
 --   updated_date TEXT;
 
 
-INSERT INTO cart_product(cart_id,product_id,quantity)
-VALUES (1,5,1);
+-- INSERT INTO cart_product(cart_id,product_id,quantity)
+-- VALUES (4,1,1);
 
 SELECT * FROM cart_product;
 
+
+-- INSERT INTO cart_product
+-- SELECT * FROM cart_productss
+-- WHERE cart_id=1;
+
+-------- JOIN the 
 SELECT *
 FROM ((cart_product
 INNER JOIN cart ON cart.id = cart_product.cart_id)
-INNER JOIN products ON products.id = cart_product.product_id);
+INNER JOIN products ON products.id = cart_product.product_id)
+WHERE user_id=1;
 
 
 
@@ -193,3 +199,76 @@ INNER JOIN products ON products.id = cart_product.product_id);
 
 -- disable
 -- PRAGMA foreign_keys=OFF;
+
+
+
+------------------------------------------------------ SQLite Queries --------------------------------------- 
+
+----------------CREATE Table----
+
+-- CREATE TABLE user(
+--   user_id INTEGER NOT NULL PRIMARY KEY, 
+--   full_name VARCHAR(200),
+--   mobile_number INTEGER,
+--   email VARCHAR(200),
+--   password VARCHAR,
+--   created_at TEXT,
+--   updated_at TEXT,
+-- );
+
+---------------- DELETE Table ---------------
+
+-- DROP TABLE table_name;
+
+
+
+
+---------------------------------------------COLUMNS--------------------------
+
+
+
+----------------ADD Column in Table----
+
+-- ALTER TABLE
+--   user
+-- ADD
+--   password TEXT;
+
+-----------------Rename Column in Table ----
+
+-- ALTER TABLE
+--   table_name RENAME COLUMN c1 TO c2;
+
+-----------------DELETE column in Table----
+
+-- ALTER TABLE
+--   table_name DROP COLUMN column_name;
+
+
+
+
+-------------------------------------------------ROWS-------------------
+
+
+
+----------------Add Rows in the Table--------
+
+-- INSERT INTO user(full_name,mobile_number,email,created_at,updated_at,password)
+-- VALUES ("Balu Tarock", 9398453013,"balutarock71117@gmail.com","22-12-2022","22-12-2022","password");
+
+--------------- UPDATE the row-----
+
+-- UPDATE user
+-- SET email = "riyaz@gmail.com"
+-- WHERE user_id=2;
+
+--------------- DELETE the row------
+
+-- DELETE FROM user
+-- WHERE user_id = 4;
+
+
+---------------- VIEW the rows------
+
+
+-- SELECT * FROM cart_product;
