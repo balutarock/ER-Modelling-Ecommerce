@@ -43,7 +43,7 @@ PRAGMA foreign_keys;
 
 -- SELECT * FROM user WHERE email='subbu@gmail.com';
 
-SELECT * FROM user;
+-- SELECT * FROM user;
 
 --------------2. Address Table -----------------------------------------------------------------
 
@@ -109,7 +109,7 @@ SELECT * FROM user;
 -- WHERE id=1;
 
 
-SELECT * FROM products;
+-- SELECT * FROM products;
 
 
 -------------------4. Cart Table -------------------------------------------------------------
@@ -130,7 +130,7 @@ SELECT * FROM products;
 -- INSERT INTO cart(user_id,total_price)
 -- VALUES (3,1234);
 
-SELECT * FROM cart;
+-- SELECT * FROM cart;
 
 
 -------------------- 5. cart_product Table ------------------------------
@@ -157,14 +157,14 @@ SELECT * FROM cart;
 -- INSERT INTO cart_product(cart_id,product_id,quantity)
 -- VALUES (4,1,1);
 
-SELECT * FROM cart_product;
+-- SELECT * FROM cart_product;
 
 
 -- INSERT INTO cart_product
 -- SELECT * FROM cart_productss
 -- WHERE cart_id=1;
 
--------- JOIN the 
+-------- JOIN three tables --------
 SELECT *
 FROM ((cart_product
 INNER JOIN cart ON cart.id = cart_product.cart_id)

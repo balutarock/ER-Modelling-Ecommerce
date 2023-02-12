@@ -147,19 +147,18 @@ app.get("/products/:id", authonticateToken, async (request, response) => {
       FROM
       products
       WHERE id=${id}`;
-  const productsArray = await db.get(getOneProducts);
-  response.send(JSON.stringify({ status: 200, data: productsArray }));
+  const productArray = await db.get(getOneProducts);
+  response.send(JSON.stringify({ status: 200, data: productArray }));
 });
-
 
 app.get("/cart/:id", authonticateToken, async (request, response) => {
   const { id } = request.params;
-  const getOneProducts = `
-      SELECT
-        *
-      FROM
-      products
-      WHERE id=${id}`;
-  const productsArray = await db.get(getOneProducts);
-  response.send(JSON.stringify({ status: 200, data: productsArray }));
+  const getCartProducts = `
+      SELECT *
+      FROM ((cart_product
+      INNER JOIN cart ON cart.id = cart_product.cart_id)
+      INNER JOIN products ON products.id = cart_product.product_id)
+      WHERE user_id=${id};`;
+  const CartProducts = await db.all(getCartProducts);
+  response.send(JSON.stringify({ status: 200, data: CartProducts }));
 });
